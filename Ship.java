@@ -1,6 +1,6 @@
 
 public class  Ship{
-	//Variables
+	//Variables that are in the form of private instance and each of these variables make a ship a ship in this game
 	private String name;
 	private int size;
 	private boolean isSunk;
@@ -36,7 +36,7 @@ public class  Ship{
 	  // public final char[] BOARD_LETTERS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 	  //  public final int BOARD_SIZE = 10;
 	
-	
+	//Mutator functions
 	public String getName() {
 		return name;
 	}

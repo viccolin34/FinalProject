@@ -1,30 +1,38 @@
+import java.util.Scanner;
 
 public class Player {
-    private static final int[] ShipSizes = {1, 2, 3};
-    private static final int NumberofShips = 3;
-    
-    private Ship[] ships;
-    private BattleshipBoard gameBoard;
-    
-
-	public Player() {
-		ships = new Ship[NumberofShips];
-				
-		for (int i = 0; i < NumberofShips; i++)
-        {
-            Ship tempShip = new Ship(ShipSizes[i], null);
-            ships[i] = tempShip;
-        }
-        
-        gameBoard = new BattleshipBoard();
-    
+	private int misslesLeft = 20;
+	private static BattleshipBoard board;
+	//constructor
+	public Player (int x) {
+		misslesLeft = x;
 	}
-	public int remainingShips() {
-		int totalShips = 3;
-		for (Ship x :ships) {
-		}
-        
-        return totalShips;
-        
-	}
+	 public int fireMissles(String[][] battleshipBoard, int missles, int hits, int row, int col) {
+		 Scanner keyboard = new Scanner(System.in);
+		 System.out.println("Please enter a row in which you would like to fire upon. 1 through 8.");
+   	  	 row = keyboard.nextInt();
+   	  while(row > 8 || row < 1){
+   		  System.out.println("Please enter a row in which you would like to fire upon. 1 through 8.");
+   		  row = keyboard.nextInt();
+     }
+   	  System.out.println("Please enter a column in which you would like to fire upon. 1 through 8.");
+   	  col = keyboard.nextInt();
+     while(col > 8 || col < 1 ) {
+   	  System.out.println("Please enter a column in which you would like to fire upon. 1 through 8.");
+   	  col = keyboard.nextInt();
+     }
+     if(battleshipBoard[row-1][col-1].equals("S"))
+         {
+            hits ++;
+            System.out.println("HIT");
+            battleshipBoard[row-1][col-1] = "!";
+         }
+         else
+         {
+            System.out.println("MISS");
+            battleshipBoard[row-1][col-1] = "O";
+         }
+         return hits;
+      
+     }
 }
