@@ -1,38 +1,69 @@
 import java.util.Scanner;
 
+
 public class Player {
-	private int misslesLeft = 20;
 	private static BattleshipBoard board;
-	//constructor
-	public Player (int x) {
-		misslesLeft = x;
+	
+
+	public Player(BattleshipBoard b){
+		board = b;
+		
 	}
-	 public int fireMissles(String[][] battleshipBoard, int missles, int hits, int row, int col) {
+	
+	 public int createPlayer(int missles, int hits) {
+		 while (missles > 0) {
 		 Scanner keyboard = new Scanner(System.in);
-		 System.out.println("Please enter a row in which you would like to fire upon. 1 through 8.");
-   	  	 row = keyboard.nextInt();
-   	  while(row > 8 || row < 1){
-   		  System.out.println("Please enter a row in which you would like to fire upon. 1 through 8.");
-   		  row = keyboard.nextInt();
+	   	  System.out.println("Please enter a row in which you would like to fire upon. 1 through 8.");
+	   	  int row = keyboard.nextInt();
+	   	  while(row > 8 || row < 1){
+	   		  System.out.println("You dingus! Pick a valid cordinate 1 through 8.");
+	   		  row = keyboard.nextInt();
+	     }
+	   	 System.out.println("Please enter a column in which you would like to fire upon. 1 through 8.");
+	   	 int col = keyboard.nextInt();
+	     while(col > 8 || col < 1 ) {
+	   	  System.out.println("You jamoke! Pick a valid cordinate 1 through 8.");
+	   	  col = keyboard.nextInt();
+	     }
+	     if(board.getBoard()[row-1][col-1].equals("S"))
+	         {
+	            
+	            System.out.println("HIT");
+	            board.getBoard()[row-1][col-1] = "!";
+	           hits++;
+	         }
+	    
+	         else
+	         {
+	            System.out.println("MISS");
+	            board.getBoard()[row-1][col-1] = "O";
+	         }
+	     missles--;
+		 }
+		return hits;
+		 
+	 }
+	 public void results(int hits, int missles) {
+	 if(hits < 3) {
+         System.out.println("You have been defeated because you did not sink all of the ships.");
      }
-   	  System.out.println("Please enter a column in which you would like to fire upon. 1 through 8.");
-   	  col = keyboard.nextInt();
-     while(col > 8 || col < 1 ) {
-   	  System.out.println("Please enter a column in which you would like to fire upon. 1 through 8.");
-   	  col = keyboard.nextInt();
+     if(missles < 1) {
+         System.out.println("Captain!!! You have no more missles.");
      }
-     if(battleshipBoard[row-1][col-1].equals("S"))
+      else
+      
+         if(hits >= 3)
          {
-            hits ++;
-            System.out.println("HIT");
-            battleshipBoard[row-1][col-1] = "!";
+            System.out.println("You have beaten the game battleship, Thanks for playing!");
          }
-         else
-         {
-            System.out.println("MISS");
-            battleshipBoard[row-1][col-1] = "O";
-         }
-         return hits;
+      System.out.println("Good game, well played!");
+     
       
      }
+
 }
+
+	 
+
+	     
+

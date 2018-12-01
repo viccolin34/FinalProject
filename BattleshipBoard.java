@@ -2,7 +2,7 @@ import java.util.Scanner;
    public class BattleshipBoard
    {
 	   
-	   private String[][] board;
+	   private static String[][] board;
 	   private int row;
 	   private int col;
 	   
@@ -37,23 +37,25 @@ import java.util.Scanner;
       }
       public void showBoard()
       {
-         for(int row = 0; row < board.length; row++)
-         {
-            for(int column = 0; column < board[0].length; column++)
-               {
-       
-                  {
-                     System.out.print(" "+board[row][column]);
-                  }
-               }
-               System.out.println("");
+         for(int row = 0; row < board.length; row++) {
+        	 
+        	 for(int column = 0; column < board[0].length; column++) {
+        		 
+        		 if(board[row][column].equals("S")) {
+        			 
+        			 System.out.print(" " + "S");
+        		
+        		 } else {
+        			 System.out.print(" " + board[row][column]);
+        		 }
+        	 }
+        	 System.out.println("");
          }
-         System.out.println("");
+    	 System.out.println("");
+
       }
      
-      public void placeShip(Ship ship) {
-    	    
-      }
+      
       public int fireMissles(String[][] battleshipBoard, int missles, int hits, int row, int col) {
     	  Scanner keyboard = new Scanner(System.in);
     	  System.out.println("Please enter a row in which you would like to fire upon. 1 through 8.");
@@ -70,9 +72,10 @@ import java.util.Scanner;
       }
       if(board[row-1][col-1].equals("S"))
           {
-             hits ++;
+           
              System.out.println("HIT");
              board[row-1][col-1] = "!";
+             hits++;
           }
           else
           {
@@ -80,7 +83,7 @@ import java.util.Scanner;
              board[row-1][col-1] = "O";
           }
           return hits;
-       
+      
       }
       
       public static void main(String[] arg) {
@@ -88,8 +91,15 @@ import java.util.Scanner;
          PositionofShip p = new PositionofShip(bshipboard) ;
          p.createShip(3);
          bshipboard.showBoard();
-         Player playerOne = new Player(20);
+         Player p1 = new Player(bshipboard);
+         p1.createPlayer(12,0);
+         p1.results(3, 15);
          
-      
+         
+         
       }
- }
+      
+      
+   }
+      
+   
