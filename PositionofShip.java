@@ -1,5 +1,7 @@
 import java.util.Random;
-
+/*
+ * The positionofShip class describes the exact position of the ship on the board
+ */
 public class PositionofShip {
 /*
 * The positionofShip class describes the exact position of the ship on the board
@@ -22,7 +24,7 @@ public static void createShip(int size)
            
            for(int i = 0; i<size; i++)//"S" means ship and it is being placed on the board
            {
-          if(col+i <board.getCol())//Checker.//Correction with Ismail
+          if(col+i < board.getCol())//Checker.//Correction with Ismail
           board.getBoard()[row][col+i] = "S";
           else
           board.getBoard()[row][col-i] = "S";

@@ -1,4 +1,8 @@
 import java.util.Scanner;
+/*The BattleshipBoard class contains methods that define the game board and create the game board
+ */
+
+
    public class BattleshipBoard
    {
 	   
@@ -26,8 +30,9 @@ import java.util.Scanner;
 	   }
      
       public void createBoard()
+     
       {
-         for(int row = 0; row < board.length; row++)
+    	 for(int row = 0; row < board.length; row++)
          {
             for(int column = 0; column < board[0].length; column++)
             {
@@ -86,6 +91,7 @@ import java.util.Scanner;
       
       }
       
+      
       public static void main(String[] arg) {
          BattleshipBoard bshipboard = new BattleshipBoard(8,8);
          PositionofShip p = new PositionofShip(bshipboard) ;
@@ -93,8 +99,6 @@ import java.util.Scanner;
          bshipboard.showBoard();
          Player p1 = new Player(bshipboard);
          p1.createPlayer(12,0);
-         p1.results(3, 15);
-         
          
          
       }
